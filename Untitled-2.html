@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday FREZAA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --clay:#c9a97e; --clay-deep:#b5915f; --cream:#f8efdd; --ink:#7a2418; --red:#a4372a; --blush:#eec9bd;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 30%, var(--clay) 0%, var(--clay-deep) 100%);
+  font-family:'Cormorant Garamond',Georgia,serif;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
+.stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hidden{display:none !important;}
+.fade-out{animation:fadeOut .5s ease forwards;}
+@keyframes fadeOut{to{opacity:0;}}
+@keyframes rise{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes settle{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes breathe{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.will-rise{opacity:0;animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards;}
+
+/* corner ornaments, shared */
+.orn{position:absolute;font-size:3.4rem;opacity:0;filter:drop-shadow(0 6px 10px rgba(40,15,5,.25));}
+.orn.tl{left:6%;top:9%;transform:rotate(-8deg);}
+.orn.br{right:6%;bottom:9%;transform:rotate(8deg);}
+.orn.show{animation:settle .7s ease forwards;}
+
+/* confetti */
+.confetti{position:fixed;top:-5%;width:9px;height:14px;opacity:.95;z-index:9;pointer-events:none;
+  animation:confetti-fall linear forwards;border-radius:1px;}
+@keyframes confetti-fall{
+  0%{transform:translateY(0) rotate(0deg);}
+  100%{transform:translateY(112vh) rotate(720deg);}
+}
+
+/* ---------- SCREEN 1 ---------- */
+#s1{flex-direction:column;gap:2.6rem;}
+.eyebrow{color:var(--cream);font-size:1.6rem;letter-spacing:.5px;font-style:italic;font-weight:500;
+  animation-delay:.1s;text-align:center;}
+.seal-wrap{width:230px;height:150px;position:relative;animation-delay:.35s;
+  animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards, breathe 4s ease-in-out 1.2s infinite;}
+.env-flat{width:100%;height:100%;}
+#open-btn{border:none;background:var(--cream);color:var(--ink);font-family:inherit;font-size:1.35rem;
+  font-style:italic;padding:.8rem 2.1rem;border-radius:2px;cursor:pointer;letter-spacing:.5px;
+  box-shadow:0 10px 22px rgba(60,30,10,.28);animation-delay:.6s;position:relative;}
+#open-btn:after{content:"";position:absolute;left:50%;bottom:-9px;width:34px;height:2px;background:var(--red);
+  transform:translateX(-50%);}
+#open-btn:hover{transform:translateY(-2px);}
+#open-btn:focus-visible{outline:3px solid var(--red);outline-offset:3px;}
+
+/* ---------- SCREEN 2 ---------- */
+#s2{perspective:900px;}
+.envelope{width:340px;height:230px;position:relative;cursor:pointer;}
+.env-back{position:absolute;inset:0;}
+.flap{position:absolute;top:0;left:0;width:100%;transform-origin:top center;
+  transition:transform 1s cubic-bezier(.5,1.6,.4,1);}
+.envelope.open .flap{transform:rotateX(178deg);}
+.letter{position:absolute;left:9%;top:60%;width:82%;height:0;background:var(--cream);border-radius:2px;
+  box-shadow:0 6px 18px rgba(50,20,5,.2);display:flex;align-items:center;justify-content:center;
+  overflow:hidden;transition:height .7s cubic-bezier(.2,.8,.2,1) .35s, top .7s cubic-bezier(.2,.8,.2,1) .35s;}
+.envelope.open .letter{height:72%;top:14%;}
+.letter span{opacity:0;color:var(--ink);font-size:1.25rem;font-style:italic;letter-spacing:.4px;transition:opacity .4s ease .9s;}
+.envelope.open .letter span{opacity:1;}
+.letter:hover span{text-decoration:underline;}
+.hint{position:absolute;bottom:-2.6rem;left:50%;transform:translateX(-50%);color:var(--cream);
+  font-style:italic;font-size:1.05rem;opacity:.85;animation-delay:.9s;}
+.envelope.open ~ .hint{display:none;}
+
+/* ---------- SCREEN 3 ---------- */
+.card{width:min(480px,86vw);background:var(--cream);padding:3.4rem 2.6rem;border-radius:2px;text-align:center;
+  box-shadow:0 20px 45px rgba(40,15,5,.32);position:relative;}
+.card .line{opacity:0;animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards;color:var(--ink);}
+.card .headline{font-size:2.1rem;font-style:italic;font-weight:600;margin:0 0 1.1rem;animation-delay:.15s;}
+.card .body{font-size:1.35rem;line-height:1.55;margin:0 0 1.2rem;font-weight:500;animation-delay:.55s;}
+.card .sign{font-size:1.6rem;color:var(--red);font-weight:700;letter-spacing:1px;animation-delay:1s;}
+.rule{width:52px;height:1px;background:var(--red);margin:0 auto 1.3rem;opacity:0;animation:rise .6s ease forwards .4s;}
+</style>
+</head>
+<body>
+
+<!-- SCREEN 1 -->
+<div class="stage" id="s1">
+  <div class="eyebrow will-rise">u got an email</div>
+  <div class="seal-wrap will-rise">
+    <svg class="env-flat" viewBox="0 0 230 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="226" height="146" rx="4" fill="#f8efdd" stroke="#00000012"/>
+      <path d="M4 4 L115 92 L226 4" fill="none" stroke="#c9a97e" stroke-width="2"/>
+      <path d="M4 4 L115 92 L226 4 L226 8 L115 98 L4 8 Z" fill="#eee0c7"/>
+      <g transform="translate(115 90)">
+        <path d="M0 14 C-14 2 -14 -10 -3 -12 C2 -13 0 -6 0 -6 C0 -6 -2 -13 3 -12 C14 -10 14 2 0 14 Z" fill="#a4372a"/>
+      </g>
+    </svg>
+  </div>
+  <button id="open-btn" class="will-rise">click here</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="stage hidden" id="s2">
+  <div class="orn tl">🍓</div>
+  <div class="orn br">🍰</div>
+
+  <div class="envelope" id="envelope">
+    <div class="env-back">
+      <svg viewBox="0 0 340 230" width="340" height="230">
+        <rect x="2" y="2" width="336" height="226" rx="4" fill="#f8efdd" stroke="#00000012"/>
+        <path d="M4 226 L170 130 L336 226 Z" fill="#efe1c8"/>
+        <path d="M4 4 L4 226 L170 140 Z" fill="#e9dab9"/>
+        <path d="M336 4 L336 226 L170 140 Z" fill="#e9dab9"/>
+      </svg>
+    </div>
+    <div class="letter"><span>click here</span></div>
+    <svg class="flap" viewBox="0 0 340 150" width="340" height="150">
+      <path d="M0 0 L340 0 L170 138 Z" fill="#f3e6cd" stroke="#00000010"/>
+      <g transform="translate(170 120)">
+        <path d="M0 16 C-16 2 -16 -12 -4 -14 C2 -15 0 -7 0 -7 C0 -7 -2 -15 4 -14 C16 -12 16 2 0 16 Z" fill="#a4372a"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hint will-rise">open the letter</div>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="stage hidden" id="s3">
+  <div class="orn tl">💐</div>
+  <div class="orn br">🎂</div>
+  <div class="card">
+    <div class="line headline">happy birthday, Frezaa</div>
+    <div class="rule"></div>
+    <div class="line body">Hope your special day brings you all the happiness you deserve.</div>
+    <div class="line sign">&lt;3 &lt;3 &lt;3</div>
+  </div>
+</div>
+
+<script>
+const s1=document.getElementById('s1'), s2=document.getElementById('s2'), s3=document.getElementById('s3');
+document.getElementById('open-btn').onclick=()=>{
+  s1.classList.add('fade-out');
+  setTimeout(()=>{s1.classList.add('hidden'); s2.classList.remove('hidden');
+    s2.querySelectorAll('.orn').forEach((el,i)=>setTimeout(()=>el.classList.add('show'), i*180));
+  },450);
+};
+function confettiBurst(){
+  const colors=['#a4372a','#e86150','#f2b807','#eec9bd','#6f9e63','#f8efdd'];
+  for(let i=0;i<40;i++){
+    const p=document.createElement('div');
+    p.className='confetti';
+    p.style.left=Math.random()*100+'vw';
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration=(2.4+Math.random()*1.6)+'s';
+    p.style.animationDelay=(Math.random()*0.5)+'s';
+    p.style.width=(6+Math.random()*6)+'px';
+    p.style.height=(10+Math.random()*8)+'px';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),4500);
+  }
+}
+document.getElementById('envelope').addEventListener('click',function(){
+  if(this.classList.contains('open')) return;
+  this.classList.add('open');
+  confettiBurst();
+  setTimeout(()=>{
+    this.querySelector('.letter').onclick=(e)=>{
+      e.stopPropagation();
+      s2.classList.add('fade-out');
+      setTimeout(()=>{s2.classList.add('hidden'); s3.classList.remove('hidden');
+        s3.querySelectorAll('.orn').forEach((el,i)=>setTimeout(()=>el.classList.add('show'), i*180));
+      },450);
+    };
+  },1100);
+});
+</script>
+</body>
+</html>
